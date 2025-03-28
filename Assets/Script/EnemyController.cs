@@ -67,7 +67,6 @@ public class EnemyController : MonoBehaviour
             this.transform.parent.transform.position += Vector3.left * Time.fixedDeltaTime * speed;
         }
 
-        EnemyWin();
     }
 
     public void AttackStart()
@@ -84,7 +83,6 @@ public class EnemyController : MonoBehaviour
         if (currentHP <= 0)
         {
             GameManager.Instance.EnemyKill++;
-            GameManager.Instance.WinOrLose();
             Destroy(this.transform.parent.gameObject);
         }
     }
@@ -94,11 +92,14 @@ public class EnemyController : MonoBehaviour
         HPSlider.value = (float)currentHP / Max_hp;
     }
 
-    void EnemyWin()
+    
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(transform.position.x <= -4.5f)
+        if (collision.CompareTag("Enemy"))
         {
-            GameManager.Instance.WinOrLose();
+            GameManager.Instance.Lose();
         }
     }
 

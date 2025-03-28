@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,7 +51,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        
+
+
+        Win();
+
+
     }
 
     //生成敵人的協程
@@ -68,19 +71,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void WinOrLose()
+
+
+
+    public void Win()
     {
         if(EnemyKill == TotalNumberOfEnemies)
         {
             SceneManager.LoadScene(1);
             WinPanel.SetActive(true);
-
-        }
-        else
-        {
-            SceneManager.LoadScene(1);
-            LosePanel.SetActive(true);
         }
     }
-    
+    public void Lose()
+    {
+
+        SceneManager.LoadScene(1);
+        LosePanel.SetActive(true);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            GameManager.Instance.Lose();
+        }
+    }
 }
