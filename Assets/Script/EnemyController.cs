@@ -25,7 +25,6 @@ public class EnemyController : MonoBehaviour
     public void getDamage(int damage)
     {
         this.currentHP -= damage;
-        UPdateHPUI();
         IfYouDie();
     }
     private void Awake()
@@ -61,11 +60,15 @@ public class EnemyController : MonoBehaviour
            
         }
 
+
+
         ///¼Ä¤Hªº²¾°Ê
         if (!findSolider)
         {
             this.transform.parent.transform.position += Vector3.left * Time.fixedDeltaTime * speed;
         }
+
+        UPdateHPUI();
 
     }
 
@@ -94,14 +97,6 @@ public class EnemyController : MonoBehaviour
 
     
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            GameManager.Instance.Lose();
-        }
-    }
 
 }
 

@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     [Range(0, 10)] public float startTime = 3;
     float RandomRange; // 我要的隨機生成敵人的時間
 
-    [Tooltip("敵人數量")]public int TotalNumberOfEnemies = 5; // 总共的敌人数量
+    [Tooltip("敵人數量")]public int TotalNumberOfEnemies = 15; // 总共的敌人数量
+
 
     public static GameManager Instance;
     public int EnemyKill = 0;

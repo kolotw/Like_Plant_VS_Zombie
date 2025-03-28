@@ -1,10 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class ArrorController : MonoBehaviour
 {
     public float speed = 8f;
-    
 
+    private void OnEnable()
+    {
+        StartCoroutine(HideArrow());
+    }
     private void FixedUpdate()
     {
         this.transform.position += Vector3.right * Time.fixedDeltaTime * speed;
@@ -19,6 +23,11 @@ public class ArrorController : MonoBehaviour
 
         }
         
+    }
+    IEnumerator HideArrow()
+    {
+        yield return new WaitForSeconds(5);
+        this.gameObject.SetActive(false);
     }
 
 }

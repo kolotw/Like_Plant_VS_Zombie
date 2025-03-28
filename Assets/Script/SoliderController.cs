@@ -23,7 +23,6 @@ public class SoliderController : MonoBehaviour
     public void getDamage(int damage)
     {
         this.currentHP -= damage;
-        UPdateHPUI();
         IfYouDie();
     }
     private void Awake()
@@ -31,11 +30,13 @@ public class SoliderController : MonoBehaviour
         anim = GetComponent<Animator>();
         TempArrow = Instantiate(Arrow,this.transform.position+ArrowStartPos,Quaternion.identity);
         TempArrow.SetActive(false);
+
         this.currentHP = Max_hp;
+        
         HPSlider = HPBar.GetComponent<Slider>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         ///ÀË´ú¬O§_¦³¼Ä¤H
         RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.right, 5);
@@ -49,6 +50,8 @@ public class SoliderController : MonoBehaviour
                 break;
             }
         }
+
+        UPdateHPUI();
     }
 
     public void Shoot()
