@@ -79,14 +79,14 @@ public class GameManager : MonoBehaviour
     {
         if(EnemyKill == TotalNumberOfEnemies)
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
             WinPanel.SetActive(true);
         }
     }
     public void Lose()
     {
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
         LosePanel.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
